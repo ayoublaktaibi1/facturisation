@@ -1,0 +1,38 @@
+.main-content {
+  width: 100%;
+  padding: 25px;
+  overflow: auto;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    width: 66.666667%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    width: 75%;
+  }
+}
+
+.content-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #374151;
+}
+
+.empty-state {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+}
+
+.empty-state-subtitle {
+  font-size: 0.8rem;
+  margin-top: 7px;
+}
