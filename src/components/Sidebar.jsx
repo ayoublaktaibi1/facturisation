@@ -33,37 +33,39 @@ function Sidebar({
           />
           {formErrors.name && <p className="error-message">{formErrors.name}</p>}
         </div>
-       
-        <div className="input-group">
-          <label className="form-label" htmlFor="quantity">
-            Quantité
-          </label>
-          <input
-            id="quantity"
-            type="number"
-            className="form-input"
-            value={currentItem.quantity}
-            onChange={(e) => setCurrentItem({...currentItem, quantity: e.target.value})}
-            min="1"
-            step="0.01"
-          />
-          {formErrors.quantity && <p className="error-message">{formErrors.quantity}</p>}
-        </div>
-       
-        <div className="input-group">
-          <label className="form-label" htmlFor="unitPrice">
-            Prix unitaire (DH)
-          </label>
-          <input
-            id="unitPrice"
-            type="number"
-            className="form-input"
-            value={currentItem.unitPrice}
-            onChange={(e) => setCurrentItem({...currentItem, unitPrice: e.target.value})}
-            min="0"
-            step="0.01"
-          />
-          {formErrors.unitPrice && <p className="error-message">{formErrors.unitPrice}</p>}
+
+        <div className="inputs">
+          <div className="input-group">
+            <label className="form-label" htmlFor="quantity">
+              Quantité
+            </label>
+            <input
+              id="quantity"
+              type="number"
+              className="form-input"
+              value={currentItem.quantity}
+              onChange={(e) => setCurrentItem({...currentItem, quantity: e.target.value})}
+              min="1"
+              step="0.01"
+            />
+            {formErrors.quantity && <p className="error-message">{formErrors.quantity}</p>}
+          </div>
+        
+          <div className="input-group">
+            <label className="form-label" htmlFor="unitPrice">
+              Prix unitaire (DH)
+            </label>
+            <input
+              id="unitPrice"
+              type="number"
+              className="form-input"
+              value={currentItem.unitPrice}
+              onChange={(e) => setCurrentItem({...currentItem, unitPrice: e.target.value})}
+              min="0"
+              step="0.01"
+            />
+            {formErrors.unitPrice && <p className="error-message">{formErrors.unitPrice}</p>}
+          </div>
         </div>
        
         <div className="button-container">
@@ -108,7 +110,6 @@ function Sidebar({
           </div>
         </div>
         
-        {/* Bouton pour vider le localStorage */}
         <div className="clear-storage-section">
           <button
             type="button"

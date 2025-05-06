@@ -1,10 +1,18 @@
+.items-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 .items-table {
   width: 100%;
   background-color: white;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-collapse: collapse;
+  min-width: 600px; /* Ensure we can scroll on mobile */
 }
 
 .table-header {
@@ -12,13 +20,14 @@
 }
 
 .table-th {
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   text-align: left;
   font-size: 0.75rem;
   font-weight: 500;
   color: #4b5563;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .table-body tr {
@@ -30,24 +39,29 @@
 }
 
 .table-td {
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   font-size: 0.875rem;
   color: #6b7280;
-}
-
-.action-button {
-  padding: 4px;
-  background: transparent;
-  border-radius: 9999px;
-}
-
-.action-button:hover {
-  background-color: #f3f4f6;
 }
 
 .action-buttons {
   display: flex;
   gap: 8px;
+  justify-content: flex-start;
+}
+
+.action-button {
+  padding: 0.5rem;
+  background: transparent;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #f3f4f6;
 }
 
 .total-row {
@@ -58,10 +72,74 @@
   text-align: right;
 }
 
-@media (max-width: 640px) {
-  .items-table {
-    display: block;
-    overflow-x: auto;
-    min-width: 180%;
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  .table-td, .table-th {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .action-buttons {
+    gap: 4px;
+  }
+  
+  .action-button {
+    padding: 0.4rem;
+  }
+}
+
+/* Card view for very small screens as alternative UI */
+@media (max-width: 480px) {
+  .mobile-item-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mobile-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-item-name {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #374151;
+  }
+  
+  .mobile-item-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .mobile-item-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .mobile-item-detail {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mobile-detail-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+  .mobile-detail-value {
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .mobile-item-subtotal {
+    margin-top: 0.5rem;
+    text-align: right;
+    font-weight: 500;
+    color: #4f46e5;
   }
 }

@@ -4,16 +4,43 @@
   padding: 0;
 }
 
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --error-color: #ef4444;
+  --text-dark: #333;
+  --text-medium: #4b5563;
+  --text-light: #6b7280;
+  --bg-light: #f5f7fa;
+  --border-color: #d1d5db;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 body {
   font-family: 'Segoe UI', 'Roboto', sans-serif;
-  background-color: #f5f7fa;
-  color: #333;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .main-container {
@@ -25,35 +52,59 @@ body {
 @media (max-width: 768px) {
   .main-container {
     flex-direction: column;
+    overflow-y: auto;
   }
 }
 
+/* Button styles */
 button {
   cursor: pointer;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: 500;
   transition: background-color 0.2s, transform 0.1s;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  touch-action: manipulation;
 }
 
-button:hover {
-  transform: translateY(-1px);
+@media (hover: hover) {
+  button:hover {
+    transform: translateY(-1px);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
 }
 
-button:active {
-  transform: translateY(0);
+/* Touch device optimizations */
+@media (hover: none) {
+  button {
+    padding: 0.6rem 1rem; /* Larger touch target */
+  }
 }
 
+/* Form element styles */
 input, select {
   width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none; /* Remove iOS default styling */
 }
 
 input:focus, select:focus {
   outline: none;
-  border-color: #4f46e5;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Fix iOS zoom on input focus */
+@media screen and (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px;
+  }
 }
